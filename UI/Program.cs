@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TextFlasher.Presentation.Presenters;
+using TextFlasher.DomainModel;
 
-namespace TextFlasher
+namespace TextFlasher.UI
 {
     static class Program
     {
@@ -16,7 +18,9 @@ namespace TextFlasher
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());
+
+            var presenter = new MainPresenter(new MainForm(), new TextService());
+            presenter.Run();
         }
     }
 }
